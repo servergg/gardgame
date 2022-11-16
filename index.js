@@ -1,14 +1,6 @@
 const MAX_STAT_VALUE = 99;
 const MIN_STAT_VALUE = 0;
 const STATS = ["STR", "DEX", "CON", "WIS", "INT", "CHA"];
-// const RANK = [
-//     {name: "E", max: 9},
-//     {name: "D", max: 29},
-//     {name: "C", max: 49},
-//     {name: "B", max: 69},
-//     {name: "A", max: 89},
-//     {name: "S", max: 99},
-// ];
 const RANK = [
     {name: "0", max: 9},
     {name: "1", max: 19},
@@ -20,8 +12,7 @@ const RANK = [
     {name: "7", max: 79},
     {name: "8", max: 89},
     {name: "9", max: 99},
-];
-    
+];  
 const ELEMENTS = [
     {name: "fire", win: 1, lose: 2},
     {name: "earth", win: 2, lose: 0},
@@ -109,7 +100,7 @@ function generateCard () {
         //     className,
         //     statsNumber,
         // });
-        return { ...a, [STATS[i]]: v}
+        return { ...a, [STATS[i]]: rank}
     }, {})
 
         console.log({
