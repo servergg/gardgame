@@ -3,6 +3,7 @@ import { average, range } from "./utils.js";
 export const MAX_STAT_VALUE = 9;
 export const MIN_STAT_VALUE = 0;
 export const MEAN_STAT_VALUE = average(range(MIN_STAT_VALUE, MAX_STAT_VALUE));
+export const STD_DEV_STAT_VALUE = 1.3;
 export const STATS = ["STR", "DEX", "CON", "WIS", "INT", "CHA"];
 export const ELEMENTS = [
     { name: "fire", wins: [1, 3] },
@@ -14,63 +15,63 @@ export const ELEMENTS = [
 export const BUILDS = [
     {
         name: "mage", // ["STR", "DEX", "CON", "WIS", "INT", "CHA"]
-        statsDistribution: [-0.5, 0, -0.5, 0.5, 0.5, 0] // the sum of all elements must be 0
+        statModifiers: [-5, 0, -5, 5, 5, 0] // the sum of all elements must be 0
     },
     {
         name: "warrior", // ["STR", "DEX", "CON", "WIS", "INT", "CHA"]
-        statsDistribution: [0.5, 0, 0.5, -0.5, -0.5, 0]
+        statModifiers: [5, 0, 5, -5, -5, 0]
     },
     {
         name: "cleric", // ["STR", "DEX", "CON", "WIS", "INT", "CHA"]
-        statsDistribution: [0, -0.5, 0.5, 0, -0.5, 0.5]
+        statModifiers: [0, -5, 5, 0, -5, 5]
     },
     {
         name: "rogue", // ["STR", "DEX", "CON", "WIS", "INT", "CHA"]
-        statsDistribution: [-0.5, 0.5, -0.5, 0, 0, 0.5]
+        statModifiers: [-5, 5, -5, 0, 0, 5]
     },
     {
         name: "ranger", // ["STR", "DEX", "CON", "WIS", "INT", "CHA"]
-        statsDistribution: [0, 0.5, 0, 0.5, -0.5, -0.5]
+        statModifiers: [0, 5, 0, 5, -5, -5]
     },
     // {
     //     name: "battle mage", // ["STR", "DEX", "CON", "WIS", "INT", "CHA"]
-    //     statsDistribution: [1, 1, 1, 1, 1, 1]
+    //     statModifiers: [1, 1, 1, 1, 1, 1]
     // },
     // {
     //     name: "warlock", // ["STR", "DEX", "CON", "WIS", "INT", "CHA"]
-    //     statsDistribution: [1, 1, 1, 1, 1, 1]
+    //     statModifiers: [1, 1, 1, 1, 1, 1]
     // },
     // {
     //     name: "trickster", // ["STR", "DEX", "CON", "WIS", "INT", "CHA"]
-    //     statsDistribution: [1, 1, 1, 1, 1, 1]
+    //     statModifiers: [1, 1, 1, 1, 1, 1]
     // },
     // {
     //     name: "paladin", // ["STR", "DEX", "CON", "WIS", "INT", "CHA"]
-    //     statsDistribution: [1, 1, 1, 1, 1, 1]
+    //     statModifiers: [1, 1, 1, 1, 1, 1]
     // },
     // {
     //     name: "swashbuckler", // ["STR", "DEX", "CON", "WIS", "INT", "CHA"]
-    //     statsDistribution: [1, 1, 1, 1, 1, 1]
+    //     statModifiers: [1, 1, 1, 1, 1, 1]
     // },
     // {
     //     name: "druid", // ["STR", "DEX", "CON", "WIS", "INT", "CHA"]
-    //     statsDistribution: [1, 1, 1, 1, 1, 1]
+    //     statModifiers: [1, 1, 1, 1, 1, 1]
     // },
     // {
     //     name: "shaman", // ["STR", "DEX", "CON", "WIS", "INT", "CHA"]
-    //     statsDistribution: [1, 1, 1, 1, 1, 1]
+    //     statModifiers: [1, 1, 1, 1, 1, 1]
     // },
     // {
     //     name: "barbarian", // ["STR", "DEX", "CON", "WIS", "INT", "CHA"]
-    //     statsDistribution: [1, 1, 1, 1, 1, 1]
+    //     statModifiers: [1, 1, 1, 1, 1, 1]
     // },
     // {
     //     name: "inquisitor", // ["STR", "DEX", "CON", "WIS", "INT", "CHA"]
-    //     statsDistribution: [1, 1, 1, 1, 1, 1]
+    //     statModifiers: [1, 1, 1, 1, 1, 1]
     // },
     // {
     //     name: "ninja", // ["STR", "DEX", "CON", "WIS", "INT", "CHA"]
-    //     statsDistribution: [1, 1, 1, 1, 1, 1]
+    //     statModifiers: [1, 1, 1, 1, 1, 1]
     // },
 ];
 
