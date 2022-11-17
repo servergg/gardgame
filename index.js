@@ -1,18 +1,6 @@
 const MAX_STAT_VALUE = 99;
 const MIN_STAT_VALUE = 0;
 const STATS = ["STR", "DEX", "CON", "WIS", "INT", "CHA"];
-const RANK = [
-    {name: "0", max: 9},
-    {name: "1", max: 19},
-    {name: "2", max: 29},
-    {name: "3", max: 39},
-    {name: "4", max: 49},
-    {name: "5", max: 59},
-    {name: "6", max: 69},
-    {name: "7", max: 79},
-    {name: "8", max: 89},
-    {name: "9", max: 99},
-];
 const ELEMENTS = [
     {name: "fire", win: [3, 4], lose: [1, 2]},
     {name: "earth", win: [0, 2], lose: [3, 4]},
@@ -63,8 +51,9 @@ function getRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
   }
 
-function generateStat (skew = 1) { 
-    return Math.round(getRandomDistributedNumber(MIN_STAT_VALUE, MAX_STAT_VALUE, skew));
+function generateStat (skew = 1) {
+    const value = getRandomDistributedNumber(MIN_STAT_VALUE, MAX_STAT_VALUE, skew);
+    return Math.floor(value * 0.1);
 };
 
 function getRandomElement () {
@@ -79,14 +68,6 @@ function getRandomBuild () {
     return index;
 }
 
-function getRank (value) {
-    function iterator (value, maxRank, i = 0) {
-        return value <= maxRank ? RANK[i].name : iterator(value, RANK[i + 1].max, i + 1);
-    }
-
-    return iterator(value, RANK[0].max);
-}
-
 function generateCard () {
     var buildIndex = getRandomBuild();
     var elementIndex = getRandomElement();
@@ -96,20 +77,19 @@ function generateCard () {
     var statsNumber = BUILDS[buildIndex].statsDistribution.map(value => generateStat(value));
 
     var statsRank = statsNumber.reduce((a, v, i) => {
-        const rank = getRank(v);
-        // if (rank === "S" || rank === "E") console.log({
-        //     elementName,
-        //     className,
-        //     statsNumber,
-        // });
-        return { ...a, [STATS[i]]: rank}
-    }, {})
-
-        console.log({
+        if (v === 9) console.log({
             elementName,
             className,
-            statsRank,
+            statsNumber,
         });
+        return { ...a, [STATS[i]]: v}
+    }, {})
+
+        // console.log({
+        //     elementName,
+        //     className,
+        //     statsRank,
+        // });
 }
 
-[...Array(10).keys()].forEach(generateCard)
+console.log([...Array(10).keys()].forEach(generateCard))
