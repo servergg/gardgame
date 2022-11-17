@@ -12,11 +12,13 @@ const RANK = [
     {name: "7", max: 79},
     {name: "8", max: 89},
     {name: "9", max: 99},
-];  
+];
 const ELEMENTS = [
-    {name: "fire", win: 1, lose: 2},
-    {name: "earth", win: 2, lose: 0},
-    {name: "water", win: 0, lose: 1}
+    {name: "fire", win: [3, 4], lose: [1, 2]},
+    {name: "earth", win: [0, 2], lose: [3, 4]},
+    {name: "water", win: [0, 3], lose: [1, 4]},
+    {name: "metal", win: [1, 4], lose: [0, 2]},
+    {name: "wood", win: [1, 2], lose: [0, 3]}
 ];
 const BUILDS = [
     {
