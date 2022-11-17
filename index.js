@@ -14,7 +14,27 @@ const BUILDS = [
         statsDistribution: [1.5, 1, 1.5, 0.5, 0.5, 1] // the sum of all elements must be 6
     },
     {
+        name: "battle mage", 
+        statsDistribution: [0.5, 1, 0.5, 1.5, 1.5, 1]
+    },
+    {
+        name: "warlock", 
+        statsDistribution: [0.5, 1, 0.5, 1.5, 1.5, 1]
+    },
+    {
+        name: "trickster", 
+        statsDistribution: [0.5, 1, 0.5, 1.5, 1.5, 1]
+    },
+    {
         name: "warrior", 
+        statsDistribution: [0.5, 1, 0.5, 1.5, 1.5, 1]
+    },
+    {
+        name: "paladin", 
+        statsDistribution: [0.5, 1, 0.5, 1.5, 1.5, 1]
+    },
+    {
+        name: "swashbuckler", 
         statsDistribution: [0.5, 1, 0.5, 1.5, 1.5, 1]
     },
     {
@@ -22,8 +42,32 @@ const BUILDS = [
         statsDistribution: [1, 1.5, 0.5, 1, 1.5, 0.5]
     },
     {
+        name: "druid", 
+        statsDistribution: [0.5, 1, 0.5, 1.5, 1.5, 1]
+    },
+    {
+        name: "shaman", 
+        statsDistribution: [0.5, 1, 0.5, 1.5, 1.5, 1]
+    },
+    {
+        name: "barbarian", 
+        statsDistribution: [0.5, 1, 0.5, 1.5, 1.5, 1]
+    },
+    {
+        name: "inquisitor", 
+        statsDistribution: [1, 1.5, 0.5, 1, 1.5, 0.5]
+    },
+    {
         name: "rogue", 
         statsDistribution: [1.5, 0.5, 1.5, 1, 1, 0.5]
+    },
+    {
+        name: "ninja", 
+        statsDistribution: [1.5, 0.5, 1.5, 1, 1, 0.5]
+    },
+    {
+        name: "ranger", 
+        statsDistribution: [1, 1.5, 0.5, 1, 1.5, 0.5]
     },
 ];
 
