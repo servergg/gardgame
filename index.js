@@ -2,11 +2,11 @@ const MAX_STAT_VALUE = 99;
 const MIN_STAT_VALUE = 0;
 const STATS = ["STR", "DEX", "CON", "WIS", "INT", "CHA"];
 const ELEMENTS = [
-    {name: "fire", win: [3, 4], lose: [1, 2]},
-    {name: "earth", win: [0, 2], lose: [3, 4]},
-    {name: "water", win: [0, 3], lose: [1, 4]},
-    {name: "metal", win: [1, 4], lose: [0, 2]},
-    {name: "wood", win: [1, 2], lose: [0, 3]}
+    { name: "fire", wins: [1, 3] },
+    { name: "earth", wins: [2, 4] },
+    { name: "water", wins: [0, 3] },
+    { name: "wind", wins: [4, 1] },
+    { name: "lighting", wins: [0, 2] }
 ];
 const BUILDS = [
     {
