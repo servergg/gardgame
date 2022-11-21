@@ -1,4 +1,4 @@
-import { average, range } from "./utils.js";
+import { average, range, buildModifier } from "./utils.js";
 
 export const MAX_STAT_VALUE = 9;
 export const MIN_STAT_VALUE = 0;
@@ -14,65 +14,65 @@ export const ELEMENTS = [
 ];
 export const BUILDS = [
     {
-        name: "mage", // ["STR", "DEX", "CON", "WIS", "INT", "CHA"]
-        statModifiers: [-5, 0, -5, 5, 5, 0] // the sum of all elements must be 0
+        name: "mage",
+        statModifiers: buildModifier({ WIS: 5, INT: 5, STR: -5, CON: -5 })
     },
     {
-        name: "warrior", // ["STR", "DEX", "CON", "WIS", "INT", "CHA"]
-        statModifiers: [5, 0, 5, -5, -5, 0]
+        name: "warrior",
+        statModifiers: buildModifier({ STR: 5, CON: 5, WIS: -5, INT: -5 })
     },
     {
-        name: "cleric", // ["STR", "DEX", "CON", "WIS", "INT", "CHA"]
-        statModifiers: [0, -5, 5, 0, -5, 5]
+        name: "cleric",
+        statModifiers: buildModifier({ CON: 5, CHA: 5, DEX: -5, INT: -5 })
     },
     {
-        name: "rogue", // ["STR", "DEX", "CON", "WIS", "INT", "CHA"]
-        statModifiers: [-5, 5, -5, 0, 0, 5]
+        name: "rogue",
+        statModifiers: buildModifier({ DEX: 5, CHA: 5, STR: -5, CON: -5 })
     },
     {
-        name: "ranger", // ["STR", "DEX", "CON", "WIS", "INT", "CHA"]
-        statModifiers: [0, 5, 0, 5, -5, -5]
+        name: "ranger",
+        statModifiers: buildModifier({ DEX: 5, WIS: 5, INT: -5, CHA: -5 })
     },
-    // {
-    //     name: "battle mage", // ["STR", "DEX", "CON", "WIS", "INT", "CHA"]
-    //     statModifiers: [1, 1, 1, 1, 1, 1]
-    // },
-    // {
-    //     name: "warlock", // ["STR", "DEX", "CON", "WIS", "INT", "CHA"]
-    //     statModifiers: [1, 1, 1, 1, 1, 1]
-    // },
-    // {
-    //     name: "trickster", // ["STR", "DEX", "CON", "WIS", "INT", "CHA"]
-    //     statModifiers: [1, 1, 1, 1, 1, 1]
-    // },
-    // {
-    //     name: "paladin", // ["STR", "DEX", "CON", "WIS", "INT", "CHA"]
-    //     statModifiers: [1, 1, 1, 1, 1, 1]
-    // },
-    // {
-    //     name: "swashbuckler", // ["STR", "DEX", "CON", "WIS", "INT", "CHA"]
-    //     statModifiers: [1, 1, 1, 1, 1, 1]
-    // },
-    // {
-    //     name: "druid", // ["STR", "DEX", "CON", "WIS", "INT", "CHA"]
-    //     statModifiers: [1, 1, 1, 1, 1, 1]
-    // },
-    // {
-    //     name: "shaman", // ["STR", "DEX", "CON", "WIS", "INT", "CHA"]
-    //     statModifiers: [1, 1, 1, 1, 1, 1]
-    // },
-    // {
-    //     name: "barbarian", // ["STR", "DEX", "CON", "WIS", "INT", "CHA"]
-    //     statModifiers: [1, 1, 1, 1, 1, 1]
-    // },
-    // {
-    //     name: "inquisitor", // ["STR", "DEX", "CON", "WIS", "INT", "CHA"]
-    //     statModifiers: [1, 1, 1, 1, 1, 1]
-    // },
-    // {
-    //     name: "ninja", // ["STR", "DEX", "CON", "WIS", "INT", "CHA"]
-    //     statModifiers: [1, 1, 1, 1, 1, 1]
-    // },
+    {
+        name: "battle mage",
+        statModifiers: buildModifier({ STR: 5, INT: 5, DEX: -5, CHA: -5 })
+    },
+    {
+        name: "warlock",
+        statModifiers: buildModifier({ INT: 5, CHA: 5, DEX: -5, STR: -5 })
+    },
+    {
+        name: "trickster",
+        statModifiers: buildModifier({ DEX: 5, INT: 5, STR: -5, CON: -5 })
+    },
+    {
+        name: "paladin",
+        statModifiers: buildModifier({ STR: 5, CON: 5, DEX: -5, INT: -5 })
+    },
+    {
+        name: "swashbuckler",
+        statModifiers: buildModifier({ STR: 5, DEX: 5, CON: -5, WIS: -5 })
+    },
+    {
+        name: "druid",
+        statModifiers: buildModifier({ DEX: 5, INT: 5, STR: -5, CHA: -5 })
+    },
+    {
+        name: "shaman",
+        statModifiers: buildModifier({ WIS: 5, CHA: 5, STR: -5, INT: -5 })
+    },
+    {
+        name: "barbarian",
+        statModifiers: buildModifier({ STR: 5, DEX: 5, INT: -5, CHA: -5 })
+    },
+    {
+        name: "inquisitor",
+        statModifiers: buildModifier({ DEX: 5, CHA: 5, WIS: -5, INT: -5 })
+    },
+    {
+        name: "ninja",
+        statModifiers: buildModifier({ DEX: 5, WIS: 5, STR: -5, CON: -5 })
+    },
 ];
 
 export const NAMES = [

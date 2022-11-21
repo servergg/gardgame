@@ -55,7 +55,13 @@ export function range (low,hi) {
     function rangeRec(low, hi, vals) {
        if(low > hi) return vals;
        vals.push(low);
+
        return rangeRec(low+1,hi,vals);
     }
+
     return rangeRec(low,hi,[]);
-  }
+}
+
+export function buildModifier ({ STR = 0, DEX = 0, CON = 0, WIS = 0, INT = 0, CHA = 0 }) {
+    return [STR, DEX, CON, WIS, INT, CHA];
+}
