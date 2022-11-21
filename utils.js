@@ -1,67 +1,18 @@
-export function randomTruncSkewNormal({
-    rng = Math.random,
-    range = [-Infinity, Infinity],
-    mean,
-    stdDev,
-    skew = 0
-}) {
-    // Before we start, we need to make sure the mean value is actually
-    // within our desired range
-    if (mean < range[0] || mean > range[1]) {
-        throw Error(`Mean of ${mean} not in desired range of ${range}!`);
-    }
-
-    // Box-Muller transform
-    function randomNormals(rng) {
-        let u1 = 0,
-            u2 = 0;
-        //Convert [0,1) to (0,1)
-        while (u1 === 0) u1 = rng();
-        while (u2 === 0) u2 = rng();
-        const R = Math.sqrt(-2.0 * Math.log(u1));
-        const Θ = 2.0 * Math.PI * u2;
-        return [R * Math.cos(Θ), R * Math.sin(Θ)];
-    }
-
-    // Skew-normal transform
-    // If a variate is either below or above the desired range,
-    // we recursively call the randomSkewNormal function until
-    // a value within the desired range is drawn
-    function randomSkewNormal(rng, mean, stdDev, skew = 0) {
-        const [u0, v] = randomNormals(rng);
-        if (skew === 0) {
-            const value = mean + stdDev * u0;
-            if (value < range[0] || value > range[1])
-                return randomSkewNormal(rng, mean, stdDev, skew);
-            return value;
+export function randomExponential (max, zmii = 1.1) {
+    var idx = 0;
+    if (max > 1) {
+        idx = Math.floor(Math.log((Math.random() * (Math.pow(zmii, max) - 1.0)) + 1.0) / Math.log(zmii));
+        if (idx >= max) {
+            idx = max - 1
         }
-        const sig = skew / Math.sqrt(1 + skew * skew);
-        const u1 = sig * u0 + Math.sqrt(1 - sig * sig) * v;
-        const z = u0 >= 0 ? u1 : -u1;
-        const value = mean + stdDev * z;
-        if (value < range[0] || value > range[1])
-            return randomSkewNormal(rng, mean, stdDev, skew);
-        return value;
+        idx = (max - idx) - 1
     }
-
-    return randomSkewNormal(rng, mean, stdDev, skew);
+    return idx;
 }
 
-export function average (array) {
-    return array.reduce((a, b) => a + b) / array.length;
-}
+export function randomUniform (min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
 
-export function range (low,hi) {
-    function rangeRec(low, hi, vals) {
-       if(low > hi) return vals;
-       vals.push(low);
-
-       return rangeRec(low+1,hi,vals);
-    }
-
-    return rangeRec(low,hi,[]);
-}
-
-export function buildModifier ({ STR = 0, DEX = 0, CON = 0, WIS = 0, INT = 0, CHA = 0 }) {
-    return [STR, DEX, CON, WIS, INT, CHA];
+    return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
 }
