@@ -46,7 +46,16 @@ export const RANK = [
         },
     },
 ];
-export const STATS = ["STR", "DEX", "CON", "WIS", "INT", "CHA"];
+
+export const STATS = {
+    STR: "STR",
+    DEX: "DEX",
+    CON: "CON",
+    WIS: "WIS",
+    INT: "INT",
+    CHA: "CHA"
+};
+
 export const ELEMENTS = [
     { name: "fire", wins: [1, 3] },
     { name: "earth", wins: [2, 4] },
@@ -54,71 +63,130 @@ export const ELEMENTS = [
     { name: "wind", wins: [4, 1] },
     { name: "lighting", wins: [0, 2] }
 ];
+
+const { STR, DEX, CON, WIS, INT, CHA } = STATS;
+
 export const BUILDS = [
     {
         name: "mage",
         modifiers: {
-           primary: ["INT"],
-           secondary: ["WIS"],
-           last: ["STR", "CON"], 
+           primary: [INT],
+           secondary: [WIS],
+           last: [STR, CON], 
         }
     },
-    // {
-    //     name: "warrior",
-    //     statModifiers: buildModifier({ STR: 5, CON: 5, WIS: -5, INT: -5 })
-    // },
-    // {
-    //     name: "cleric",
-    //     statModifiers: buildModifier({ CON: 5, CHA: 5, DEX: -5, INT: -5 })
-    // },
-    // {
-    //     name: "rogue",
-    //     statModifiers: buildModifier({ DEX: 5, CHA: 5, STR: -5, CON: -5 })
-    // },
-    // {
-    //     name: "ranger",
-    //     statModifiers: buildModifier({ DEX: 5, WIS: 5, INT: -5, CHA: -5 })
-    // },
-    // {
-    //     name: "spellblade",
-    //     statModifiers: buildModifier({ STR: 5, INT: 5, DEX: -5, CHA: -5 })
-    // },
-    // {
-    //     name: "warlock",
-    //     statModifiers: buildModifier({ INT: 5, CHA: 5, DEX: -5, STR: -5 })
-    // },
-    // {
-    //     name: "trickster",
-    //     statModifiers: buildModifier({ DEX: 5, INT: 5, STR: -5, CON: -5 })
-    // },
-    // {
-    //     name: "paladin",
-    //     statModifiers: buildModifier({ STR: 5, CON: 5, DEX: -5, INT: -5 })
-    // },
-    // {
-    //     name: "swashbuckler",
-    //     statModifiers: buildModifier({ STR: 5, DEX: 5, CON: -5, WIS: -5 })
-    // },
-    // {
-    //     name: "druid",
-    //     statModifiers: buildModifier({ DEX: 5, INT: 5, STR: -5, CHA: -5 })
-    // },
-    // {
-    //     name: "shaman",
-    //     statModifiers: buildModifier({ WIS: 5, CHA: 5, STR: -5, INT: -5 })
-    // },
-    // {
-    //     name: "barbarian",
-    //     statModifiers: buildModifier({ STR: 5, DEX: 5, INT: -5, CHA: -5 })
-    // },
-    // {
-    //     name: "inquisitor",
-    //     statModifiers: buildModifier({ DEX: 5, CHA: 5, WIS: -5, INT: -5 })
-    // },
-    // {
-    //     name: "ninja",
-    //     statModifiers: buildModifier({ DEX: 5, WIS: 5, STR: -5, CON: -5 })
-    // },
+    {
+        name: "warrior",
+        modifiers: {
+            primary: [STR],
+            secondary: [CON],
+            last: [WIS, INT], 
+         }
+     },
+     {
+        name: "cleric",
+        modifiers: {
+            primary: [CHA],
+            secondary: [CON],
+            last: [DEX, INT], 
+         }
+     },
+    {
+        name: "rogue",
+        modifiers: {
+            primary: [DEX],
+            secondary: [CHA],
+            last: [STR, CON], 
+         }
+     },
+    {
+        name: "ranger",
+        modifiers: {
+            primary: [WIS],
+            secondary: [DEX],
+            last: [INT, CHA], 
+         }
+    },
+    {
+        name: "spellblade",
+        modifiers: {
+            primary: [INT],
+            secondary: [STR],
+            last: [DEX, CHA], 
+         }
+    },
+    {
+        name: "warlock",
+        modifiers: {
+            primary: [INT],
+            secondary: [CHA],
+            last: [DEX, STR], 
+         }
+    },
+    {
+        name: "trickster",
+        modifiers: {
+            primary: [DEX],
+            secondary: [INT],
+            last: [STR, CON], 
+         }
+    },
+    {
+        name: "paladin",
+        modifiers: {
+            primary: [CON],
+            secondary: [STR],
+            last: [DEX, INT], 
+         }
+    },
+    {
+        name: "swashbuckler",
+        modifiers: {
+            primary: [STR],
+            secondary: [DEX],
+            last: [CON, WIS], 
+         }
+    },
+    {
+        name: "druid",
+        modifiers: {
+            primary: [INT],
+            secondary: [DEX],
+            last: [STR, CHA], 
+         }
+    },
+    {
+        name: "shaman",
+        modifiers: {
+            primary: [WIS],
+            secondary: [CHA],
+            last: [STR, INT], 
+         }
+    },
+    {
+        name: "barbarian",
+        modifiers: {
+            primary: [STR],
+            secondary: [DEX],
+            last: [INT, CHA], 
+         }
+    },
+    {
+        name: "inquisitor",
+        modifiers: {
+            primary: [DEX],
+            secondary: [CHA],
+            last: [WIS, INT], 
+         }
+    },
+    {
+        name: "ninja",
+        modifiers: {
+            primary: [DEX],
+            secondary: [WIS],
+            last: [STR, CON], 
+         }
+    },
 ];
 
 export const PROFILES = [

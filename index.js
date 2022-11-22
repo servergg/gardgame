@@ -16,7 +16,7 @@ function getBuildModifiers(build = 0) {
         primary,
         secondary,
         last,
-        standard: STATS.filter(stat => (stats.indexOf(stat) == -1))
+        standard: Object.keys(STATS).filter(key => (stats.indexOf(STATS[key]) == -1))
     };
 }
 
@@ -34,44 +34,54 @@ function getRandomStats(rank = 0, build = 0) {
         stats[s] = mod.length > 1 ? randomUniform(min, max) : mod[0];
     }));
 
-    const { STR, DEX, CON, WIS, INT, CHA } = stats;
-
-    return [STR, DEX, CON, WIS, INT, CHA];
+    return stats;
 }
 
 function getRandomRank(lambda = RANK_ALGORITHM_LAMBDA) {
     const index = randomExponential(RANK.length, lambda);
 
-    return [RANK[index], index];
+    return {
+        ...RANK[index],
+        index,
+    };
 }
 
 function getRandomProfile() {
     const index = randomUniform(0, PROFILES.length);
 
-    return [PROFILES[index], index];
+    return {
+        name: PROFILES[index],
+        index,
+    };
 };
 
 function getRandomElement() {
     const index = randomUniform(0, ELEMENTS.length);
 
-    return [ELEMENTS[index], index];
+    return {
+        ...ELEMENTS[index],
+        index,
+    };
 }
 
 function getRandomBuild() {
     const index = randomUniform(0, BUILDS.length);
 
-    return [BUILDS[index], index];
+    return {
+        ...BUILDS[index],
+        index,
+    };
 }
 
 function generateCard() {
-    const [rank, rankIdx] = getRandomRank(1.1);
-    const [build, buildIdx] = getRandomBuild();
-    const [element] = getRandomElement();
-    const [profile] = getRandomProfile();
-    const stats = getRandomStats(rankIdx, buildIdx);
+    const rank = getRandomRank(1.1);
+    const build = getRandomBuild();
+    const element = getRandomElement();
+    const profile = getRandomProfile();
+    const stats = getRandomStats(rank.index, build.index);
 
     const template = `
-    \`${profile} | ${build.name} | ${element.name} | RANK ${rank.name}\`
+    \`${profile.name} | ${build.name} | ${element.name} | RANK ${rank.name}\`
     \`${JSON.stringify(stats)}\``
 
     console.log(template);
