@@ -2,103 +2,90 @@ import {
     STATS,
     ELEMENTS,
     BUILDS,
-    NAMES,
+    PROFILES,
     RANK,
     RANK_ALGORITHM_LAMBDA,
 } from "./constants.js";
 import { randomExponential, randomUniform } from "./utils.js";
 
-// function generateStat (skew = 0) {
-//     const range = [MIN_STAT_VALUE, MAX_STAT_VALUE];
-//     const value = randomTruncSkewNormal({ mean: MEAN_STAT_VALUE, stdDev: STD_DEV_STAT_VALUE, range, skew });
+function getBuildModifiers(build = 0) {
+    const { primary, secondary, last } = BUILDS[build].modifiers;
+    const stats = [...primary, ...secondary, ...last];
 
-//     return Math.round(value);
-// };
-
-function generateRank () {
-    const r = randomExponential(RANK.length, RANK_ALGORITHM_LAMBDA);
-
-    return RANK[r];
+    return {
+        primary,
+        secondary,
+        last,
+        standard: STATS.filter(stat => (stats.indexOf(stat) == -1))
+    };
 }
 
-function attributesToList ({ STR, DEX, CON, WIS, INT, CHA }) {
+function getRandomStats(rank = 0, build = 0) {
+    let stats = {};
+
+    const rankMods = RANK[rank].modifiers;
+    const buildMods = getBuildModifiers(build);
+
+    Object.keys(buildMods).forEach(key => buildMods[key].forEach(s => {
+        const mod = rankMods[key];
+        const min = mod[mod.length - 1];
+        const max = mod[0] + 1;
+
+        stats[s] = mod.length > 1 ? randomUniform(min, max) : mod[0];
+    }));
+
+    const { STR, DEX, CON, WIS, INT, CHA } = stats;
+
     return [STR, DEX, CON, WIS, INT, CHA];
 }
 
-function generateStatsByRank (rank = 0) {
-    let stats = {};
-    const rankMod = RANK[rank].modifiers;
-    const buildMod = BUILDS[0].modifiers;
+function getRandomRank(lambda = RANK_ALGORITHM_LAMBDA) {
+    const index = randomExponential(RANK.length, lambda);
 
-    // STATS.map((stat, i) => {
-
-    // })
-
-    // modifiers.forEach((attrs, i) => {
-    //     const attr = attrs.length > 1 ? randomUniform(attrs[0], attrs[attrs.length - 1]): attrs[0];
-
-    //     mod[i] = attr;
-    // });
-
-    // return mod;
+    return [RANK[index], index];
 }
 
-function generateCharName () {
-    return randomUniform(0, NAMES.length);
+function getRandomProfile() {
+    const index = randomUniform(0, PROFILES.length);
+
+    return [PROFILES[index], index];
 };
 
 function getRandomElement() {
-    return randomUniform(0, ELEMENTS.length);
+    const index = randomUniform(0, ELEMENTS.length);
+
+    return [ELEMENTS[index], index];
 }
 
 function getRandomBuild() {
-    return randomUniform(0, BUILDS.length);
+    const index = randomUniform(0, BUILDS.length);
+
+    return [BUILDS[index], index];
 }
 
 function generateCard() {
-    const rank = generateRank();
-    // var buildIndex = getRandomBuild();
-    // var elementIndex = getRandomElement();
-    // var charNameIndex = generateCharName();
+    const [rank, rankIdx] = getRandomRank(1.1);
+    const [build, buildIdx] = getRandomBuild();
+    const [element] = getRandomElement();
+    const [profile] = getRandomProfile();
+    const stats = getRandomStats(rankIdx, buildIdx);
 
-    // var elementName = ELEMENTS[elementIndex].name;
-    // var className = BUILDS[buildIndex].name;
-    // var charName = NAMES[charNameIndex];
-    // var statsValue = BUILDS[buildIndex].statModifiers.map(value => generateStat(value));
-    // var statsRank = statsValue.reduce((a, v, i) => ({ ...a, [STATS[i]]: v }), {});
+    const template = `
+    \`${profile} | ${build.name} | ${element.name} | RANK ${rank.name}\`
+    \`${JSON.stringify(stats)}\``
 
-    // const template = `
-    // \`${charName} | ${className} | ${elementName}\`
-    // \`${JSON.stringify(statsRank)}\``
-
-    // statsValue.find(v => {
-    //     if (v === 9) {
-    //         console.log(template);
-    //         return true;
-    //     }
-
-    //     return false;
-    // });
-
-    // statsValue.some((element, index) => {
-    //     if (element === 9 && statsValue.indexOf(element) !== index) {
-    //         console.log(template);
-    //         return true;
-    //     }
-
-    //     return false;
-    // })
-
-    return rank;
+    console.log(template);
+    return template;
 }
 
-const RANK_LIST = {};
+// const RANK_LIST = {};
 
-// [...Array(10).keys()].forEach(i => {
-//     const rank = generateCard();
+// [...Array(500).keys()].forEach(i => {
+//     const [rank] = getRandomRank(1.2);
 
-//     RANK_LIST[rank] = typeof RANK_LIST[rank] === "number" ? RANK_LIST[rank] + 1 : 1;
+//     RANK_LIST[rank.name] = typeof RANK_LIST[rank.name] === "number" ? RANK_LIST[rank.name] + 1 : 1;
 // });
 
 // console.log(JSON.stringify(RANK_LIST));
-console.log(generateStatsByModifiers(RANK[4].modifiers));
+
+[...Array(20).keys()].forEach(generateCard);

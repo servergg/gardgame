@@ -13,7 +13,7 @@ export const RANK = [
         name: "C",
         modifiers: {
             primary: [5, 4], 
-            secondary: [4, 3],
+            secondary: [4, 3, 2],
             standard: [3, 2],
             last: [1],
         },
@@ -22,8 +22,8 @@ export const RANK = [
         name: "B",
         modifiers: {
             primary: [7, 6], 
-            secondary: [6, 5],
-            standard: [4, 3],
+            secondary: [6, 5, 4],
+            standard: [4, 3, 2],
             last: [2, 1],
         },
     },
@@ -121,7 +121,7 @@ export const BUILDS = [
     // },
 ];
 
-export const NAMES = [
+export const PROFILES = [
     "Aeore (Ary Roberto)",
     "anainthesky",
     "Bwana Plemos",
