@@ -74,7 +74,7 @@ function getRandomBuild() {
 }
 
 function generateCard() {
-    const rank = getRandomRank(1.1);
+    const rank = getRandomRank();
     const build = getRandomBuild();
     const element = getRandomElement();
     const profile = getRandomProfile();
