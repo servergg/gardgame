@@ -1,5 +1,5 @@
-export const RANK_ALGORITHM_LAMBDA = 3.6;
-export const RANK = [
+const RANK_ALGORITHM_LAMBDA = 3.6;
+const RANK = [
     {
         name: "D",
         modifiers: {
@@ -47,7 +47,7 @@ export const RANK = [
     },
 ];
 
-export const STATS = {
+const STATS = {
     STR: "STR",
     DEX: "DEX",
     CON: "CON",
@@ -56,7 +56,7 @@ export const STATS = {
     CHA: "CHA"
 };
 
-export const ELEMENTS = [
+const ELEMENTS = [
     { name: "fire", wins: [1, 3] },
     { name: "earth", wins: [2, 4] },
     { name: "water", wins: [0, 3] },
@@ -66,7 +66,7 @@ export const ELEMENTS = [
 
 const { STR, DEX, CON, WIS, INT, CHA } = STATS;
 
-export const BUILDS = [
+const BUILDS = [
     {
         name: "mage",
         modifiers: {
@@ -189,7 +189,7 @@ export const BUILDS = [
     },
 ];
 
-export const PROFILES = [
+const PROFILES = [
     "Aeore (Ary Roberto)",
     "anainthesky",
     "Bwana Plemos",
@@ -206,3 +206,8 @@ export const PROFILES = [
     "𝖇𝖗𝖊𝖓𝖔",
     ":skull::fire::skull:RenSound :skull::fire::skull:",
 ];
+
+
+module.exports = {
+    RANK_ALGORITHM_LAMBDA, RANK, PROFILES, BUILDS, STATS, ELEMENTS
+}

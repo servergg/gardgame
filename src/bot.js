@@ -2,8 +2,22 @@ const { Client, Events, GatewayIntentBits, Collection} = require('discord.js');
 const { token } = require('./config.json');
 const path = require("path");
 const fs = require("fs");
+const { generate } = require('stability-ts')
 
-// Create a new client instance
+const api = generate({
+    prompt: 'A Stunning House',
+    apiKey: process.env.DREAMSTUDIO_API_KEY,
+
+})
+
+api.on('image', ({ buffer, filePath }) => {
+    console.log('Image', buffer, filePath)
+})
+
+api.on('end', (data) => {
+    console.log('Generating Complete', data)
+})
+
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 client.commands = new Collection();

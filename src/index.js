@@ -1,12 +1,12 @@
-import {
+const {
     STATS,
     ELEMENTS,
     BUILDS,
     PROFILES,
     RANK,
     RANK_ALGORITHM_LAMBDA,
-} from "./constants.js";
-import { randomExponential, randomUniform } from "./utils.js";
+} = require("./constants.js");
+const { randomExponential, randomUniform } = require("./utils.js");
 
 function getBuildModifiers(build = 0) {
     const { primary, secondary, last } = BUILDS[build].modifiers;
@@ -73,7 +73,7 @@ function getRandomBuild() {
     };
 }
 
-function generateCard() {
+function generateCard(userid) {
     const rank = getRandomRank();
     const build = getRandomBuild();
     const element = getRandomElement();
@@ -85,7 +85,16 @@ function generateCard() {
     \`${JSON.stringify(stats)}\``
 
     console.log(template);
-    return template;
+    let card = {
+        "Rank": rank,
+        "Build": build,
+        "Element": element,
+        "Profile": profile,
+        "Stats": stats,
+        "Template": template,
+        "UserId": userid
+    }
+    return card;
 }
 
 // const RANK_LIST = {};
@@ -98,4 +107,8 @@ function generateCard() {
 
 // console.log(JSON.stringify(RANK_LIST));
 
-[...Array(20).keys()].forEach(generateCard);
+// [...Array(20).keys()].forEach(generateCard);
+
+module.exports = {
+    generateCard
+}
