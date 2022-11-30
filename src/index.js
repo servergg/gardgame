@@ -97,18 +97,6 @@ function generateCard(userid) {
     return card;
 }
 
-// const RANK_LIST = {};
-
-// [...Array(500).keys()].forEach(i => {
-//     const [rank] = getRandomRank(1.2);
-
-//     RANK_LIST[rank.name] = typeof RANK_LIST[rank.name] === "number" ? RANK_LIST[rank.name] + 1 : 1;
-// });
-
-// console.log(JSON.stringify(RANK_LIST));
-
-// [...Array(20).keys()].forEach(generateCard);
-
 module.exports = {
     generateCard
 }
