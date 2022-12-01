@@ -207,7 +207,11 @@ const PROFILES = [
     ":skull::fire::skull:RenSound :skull::fire::skull:",
 ];
 
+const TOKEN = process.env.TOKEN;
+const CLIENT_ID = process.env.CLIENT_ID;
+const GUILD_ID = process.env.GUILD_ID;
+const DREAMSTUDIO_API_KEY = process.env.DREAMSTUDIO_API_KEY;
 
 module.exports = {
-    RANK_ALGORITHM_LAMBDA, RANK, PROFILES, BUILDS, STATS, ELEMENTS
+    RANK_ALGORITHM_LAMBDA, RANK, PROFILES, BUILDS, STATS, ELEMENTS, TOKEN, CLIENT_ID, GUILD_ID, DREAMSTUDIO_API_KEY
 }

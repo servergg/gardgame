@@ -1,5 +1,5 @@
 const { Client, Events, GatewayIntentBits, Collection} = require('discord.js');
-const { token } = require('./config.json');
+const { TOKEN } = require('./constants.js');
 const path = require("path");
 const fs = require("fs");
 const { generate } = require('stability-ts')
@@ -58,4 +58,4 @@ client.on(Events.InteractionCreate, async interaction => {
 });
 
 // Log in to Discord with your client's token
-client.login(token);
+client.login(TOKEN);
