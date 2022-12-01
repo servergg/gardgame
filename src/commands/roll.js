@@ -1,7 +1,6 @@
 const { SlashCommandBuilder, EmbedBuilder} = require('discord.js');
 const { generateCard } = require('./../index.js');
 const { Cards } = require('../db/memory/Cards')
-const { os } = require('os')
 const http = require("http");
 
 
