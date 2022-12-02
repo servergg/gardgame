@@ -1,5 +1,4 @@
 const { SlashCommandBuilder } = require('discord.js');
-const { generateCard } = require('./../index.js');
 const { Cards } = require('../db/memory/Cards')
 
 
