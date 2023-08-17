@@ -61,129 +61,48 @@ const { STR, DEX, CON, WIS, INT, CHA } = STATS;
 
 const BUILDS = [
     {
-        name: "mage",
+        name: "Wizard",
         modifiers: {
            primary: [INT],
-           secondary: [WIS],
-           least: [STR, CON], 
+           secondary: [],
+           least: [WIS, DEX, CHA, STR, CON], 
         }
     },
     {
-        name: "warrior",
+        name: "Fighter",
         modifiers: {
             primary: [STR],
-            secondary: [CON],
-            least: [WIS, INT], 
+            secondary: [],
+            least: [CON, DEX, CHA, WIS, INT], 
          }
      },
      {
-        name: "cleric",
+        name: "Cleric",
         modifiers: {
             primary: [CHA],
-            secondary: [CON],
-            least: [DEX, INT], 
+            secondary: [],
+            least: [DEX, STR, CON, DEX, INT], 
          }
      },
     {
-        name: "rogue",
+        name: "Rogue",
         modifiers: {
             primary: [DEX],
-            secondary: [CHA],
-            least: [STR, CON], 
+            secondary: [],
+            least: [INT, WIS, CHA, STR, CON], 
          }
      },
     {
-        name: "ranger",
+        name: "Ranger",
         modifiers: {
             primary: [WIS],
-            secondary: [DEX],
-            least: [INT, CHA], 
+            secondary: [],
+            least: [DEX, STR, CON, INT, CHA], 
          }
-    },
-    {
-        name: "spellblade",
-        modifiers: {
-            primary: [INT],
-            secondary: [STR],
-            least: [DEX, CHA], 
-         }
-    },
-    {
-        name: "warlock",
-        modifiers: {
-            primary: [INT],
-            secondary: [CHA],
-            least: [DEX, STR], 
-         }
-    },
-    {
-        name: "trickster",
-        modifiers: {
-            primary: [DEX],
-            secondary: [INT],
-            least: [STR, CON], 
-         }
-    },
-    {
-        name: "paladin",
-        modifiers: {
-            primary: [CON],
-            secondary: [STR],
-            least: [DEX, INT], 
-         }
-    },
-    {
-        name: "swashbuckler",
-        modifiers: {
-            primary: [STR],
-            secondary: [DEX],
-            least: [CON, WIS], 
-         }
-    },
-    {
-        name: "druid",
-        modifiers: {
-            primary: [INT],
-            secondary: [DEX],
-            least: [STR, CHA], 
-         }
-    },
-    {
-        name: "shaman",
-        modifiers: {
-            primary: [WIS],
-            secondary: [CHA],
-            least: [STR, INT], 
-         }
-    },
-    {
-        name: "barbarian",
-        modifiers: {
-            primary: [STR],
-            secondary: [DEX],
-            least: [INT, CHA], 
-         }
-    },
-    {
-        name: "inquisitor",
-        modifiers: {
-            primary: [DEX],
-            secondary: [CHA],
-            least: [WIS, INT], 
-         }
-    },
-    {
-        name: "ninja",
-        modifiers: {
-            primary: [DEX],
-            secondary: [WIS],
-            least: [STR, CON], 
-         }
-    },
+    }
 ];
 
 const PROFILES = [
-    "Aeore (Ary Roberto)",
     "anainthesky",
     "Bwana Plemos",
     "gabrieleiro",
@@ -197,7 +116,6 @@ const PROFILES = [
     "Schweins",
     "Trilles",
     "𝖇𝖗𝖊𝖓𝖔",
-    ":skull::fire::skull:RenSound :skull::fire::skull:",
 ];
 
 const TOKEN = process.env.TOKEN;
