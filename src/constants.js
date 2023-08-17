@@ -3,47 +3,42 @@ const RANK = [
     {
         name: "D",
         modifiers: {
-            primary: [3, 2], 
-            secondary: [2, 1],
-            standard: [1],
-            last: [1, 0],
-        },
+            primary: [4, 5], 
+            secondary: [2, 3],
+            least: [0, 1]
+        }
     },
     {
         name: "C",
         modifiers: {
-            primary: [5, 4], 
-            secondary: [4, 3, 2],
-            standard: [3, 2],
-            last: [1],
-        },
+            primary: [5, 6], 
+            secondary: [3, 4],
+            least: [1, 2]
+        }
     },
     {
         name: "B",
         modifiers: {
-            primary: [7, 6], 
-            secondary: [6, 5, 4],
-            standard: [4, 3, 2],
-            last: [2, 1],
-        },
+            primary: [6, 7], 
+            secondary: [4, 5],
+            least: [2, 3]
+        }
     },
     {
         name: "A",
         modifiers: {
-            primary: [8, 7], 
-            secondary: [7, 6, 5],
-            standard: [5, 4],
-            last: [3, 2],
-        },
+            primary: [7, 8], 
+            secondary: [5, 6],
+            least: [3, 4]
+        }
     },
     {
         name: "S",
         modifiers: {
             primary: [9], 
-            secondary: [8, 7],
-            standard: [6, 5, 4], 
-            last: [4, 3],
-        },
+            secondary: [6, 7],
+            least: [4, 5]
+        }
     },
 ];
 
@@ -70,7 +65,7 @@ const BUILDS = [
         modifiers: {
            primary: [INT],
            secondary: [WIS],
-           last: [STR, CON], 
+           least: [STR, CON], 
         }
     },
     {
@@ -78,7 +73,7 @@ const BUILDS = [
         modifiers: {
             primary: [STR],
             secondary: [CON],
-            last: [WIS, INT], 
+            least: [WIS, INT], 
          }
      },
      {
@@ -86,7 +81,7 @@ const BUILDS = [
         modifiers: {
             primary: [CHA],
             secondary: [CON],
-            last: [DEX, INT], 
+            least: [DEX, INT], 
          }
      },
     {
@@ -94,7 +89,7 @@ const BUILDS = [
         modifiers: {
             primary: [DEX],
             secondary: [CHA],
-            last: [STR, CON], 
+            least: [STR, CON], 
          }
      },
     {
@@ -102,7 +97,7 @@ const BUILDS = [
         modifiers: {
             primary: [WIS],
             secondary: [DEX],
-            last: [INT, CHA], 
+            least: [INT, CHA], 
          }
     },
     {
@@ -110,7 +105,7 @@ const BUILDS = [
         modifiers: {
             primary: [INT],
             secondary: [STR],
-            last: [DEX, CHA], 
+            least: [DEX, CHA], 
          }
     },
     {
@@ -118,7 +113,7 @@ const BUILDS = [
         modifiers: {
             primary: [INT],
             secondary: [CHA],
-            last: [DEX, STR], 
+            least: [DEX, STR], 
          }
     },
     {
@@ -126,7 +121,7 @@ const BUILDS = [
         modifiers: {
             primary: [DEX],
             secondary: [INT],
-            last: [STR, CON], 
+            least: [STR, CON], 
          }
     },
     {
@@ -134,7 +129,7 @@ const BUILDS = [
         modifiers: {
             primary: [CON],
             secondary: [STR],
-            last: [DEX, INT], 
+            least: [DEX, INT], 
          }
     },
     {
@@ -142,7 +137,7 @@ const BUILDS = [
         modifiers: {
             primary: [STR],
             secondary: [DEX],
-            last: [CON, WIS], 
+            least: [CON, WIS], 
          }
     },
     {
@@ -150,7 +145,7 @@ const BUILDS = [
         modifiers: {
             primary: [INT],
             secondary: [DEX],
-            last: [STR, CHA], 
+            least: [STR, CHA], 
          }
     },
     {
@@ -158,7 +153,7 @@ const BUILDS = [
         modifiers: {
             primary: [WIS],
             secondary: [CHA],
-            last: [STR, INT], 
+            least: [STR, INT], 
          }
     },
     {
@@ -166,7 +161,7 @@ const BUILDS = [
         modifiers: {
             primary: [STR],
             secondary: [DEX],
-            last: [INT, CHA], 
+            least: [INT, CHA], 
          }
     },
     {
@@ -174,7 +169,7 @@ const BUILDS = [
         modifiers: {
             primary: [DEX],
             secondary: [CHA],
-            last: [WIS, INT], 
+            least: [WIS, INT], 
          }
     },
     {
@@ -182,7 +177,7 @@ const BUILDS = [
         modifiers: {
             primary: [DEX],
             secondary: [WIS],
-            last: [STR, CON], 
+            least: [STR, CON], 
          }
     },
 ];

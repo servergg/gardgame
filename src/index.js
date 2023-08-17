@@ -9,12 +9,12 @@ const {
 const { randomExponential, randomUniform } = require("./utils.js");
 
 function getBuildModifiers(build = 0) {
-    const { primary, secondary, last } = BUILDS[build].modifiers;
+    const { primary, secondary, least } = BUILDS[build].modifiers;
 
     return {
         primary,
         secondary,
-        last
+        least
     };
 }
 
