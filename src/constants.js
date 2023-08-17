@@ -57,11 +57,9 @@ const STATS = {
 };
 
 const ELEMENTS = [
-    { name: "fire", wins: [1, 3] },
-    { name: "earth", wins: [2, 4] },
-    { name: "water", wins: [0, 3] },
-    { name: "wind", wins: [4, 1] },
-    { name: "lighting", wins: [0, 2] }
+    { name: "fire", wins: [1] },
+    { name: "earth", wins: [2] },
+    { name: "water", wins: [0] }
 ];
 
 const { STR, DEX, CON, WIS, INT, CHA } = STATS;

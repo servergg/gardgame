@@ -10,13 +10,11 @@ const { randomExponential, randomUniform } = require("./utils.js");
 
 function getBuildModifiers(build = 0) {
     const { primary, secondary, last } = BUILDS[build].modifiers;
-    const stats = [...primary, ...secondary, ...last];
 
     return {
         primary,
         secondary,
-        last,
-        standard: Object.keys(STATS).filter(key => (stats.indexOf(STATS[key]) == -1))
+        last
     };
 }
 
