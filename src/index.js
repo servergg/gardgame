@@ -1,31 +1,16 @@
 const {
-    STATS,
     ELEMENTS,
     BUILDS,
     PROFILES,
-    RANK,
-    RANK_ALGORITHM_LAMBDA,
+    RANKS,
 } = require("./constants.js");
-const { randomExponential, randomUniform } = require("./utils.js");
+const { randomUniform } = require("./utils.js");
 
-function getBuildModifiers(build = 0) {
-    const { primary, secondary, least } = BUILDS[build].modifiers;
-
-    return {
-        primary,
-        secondary,
-        least
-    };
-}
-
-function getRandomStats(rank = 0, build = 0) {
+function generateRandomStats(rank, build) {
     let stats = {};
 
-    const rankMods = RANK[rank].modifiers;
-    const buildMods = getBuildModifiers(build);
-
-    Object.keys(buildMods).forEach(key => buildMods[key].forEach(s => {
-        const mod = rankMods[key];
+    Object.keys(build.modifiers).forEach(key => build.modifiers[key].forEach(s => {
+        const mod = rank.modifiers[key];
         const min = mod[mod.length - 1];
         const max = mod[0] + 1;
 
@@ -35,63 +20,42 @@ function getRandomStats(rank = 0, build = 0) {
     return stats;
 }
 
-function getRandomRank(lambda = RANK_ALGORITHM_LAMBDA) {
-    const index = randomExponential(RANK.length, lambda);
-
-    return {
-        ...RANK[index],
-        index,
-    };
+function generateRandomProfile() {
+    return PROFILES[randomUniform(0, PROFILES.length)];
 }
 
-function getRandomProfile() {
-    const index = randomUniform(0, PROFILES.length);
-
-    return {
-        name: PROFILES[index],
-        index,
-    };
-};
-
-function getRandomElement() {
-    const index = randomUniform(0, ELEMENTS.length);
-
-    return {
-        ...ELEMENTS[index],
-        index,
-    };
+function generateRandomElement() {
+    return ELEMENTS[randomUniform(0, ELEMENTS.length)];
 }
 
-function getRandomBuild() {
-    const index = randomUniform(0, BUILDS.length);
-
-    return {
-        ...BUILDS[index],
-        index,
-    };
+function generateRandomBuild() {
+    return BUILDS[randomUniform(0, BUILDS.length)];
 }
 
-function generateCard(userid) {
-    const rank = getRandomRank();
-    const build = getRandomBuild();
-    const element = getRandomElement();
-    const profile = getRandomProfile();
-    const stats = getRandomStats(rank.index, build.index);
+function generateRandomPreffix(element) {
+    return element.preffixes[randomUniform(0, element.preffixes.length)];
+}
 
-    const template = `
-    \`${profile.name} | ${build.name} | ${element.name} | RANK ${rank.name}\`
-    \`${JSON.stringify(stats)}\``
+function generateCard(userid, rankIndex = 0) {
+    const rank = RANKS[rankIndex];
+    const build = generateRandomBuild();
+    const element = generateRandomElement();
+    const preffix = generateRandomPreffix(element);
+    const profile = generateRandomProfile();
+    const stats = generateRandomStats(rank, build);
 
-    console.log(template);
     let card = {
         "Rank": rank,
         "Build": build,
         "Element": element,
+        "Preffix": preffix,
         "Profile": profile,
         "Stats": stats,
-        "Template": template,
         "UserId": userid
-    }
+    };
+
+    console.log(card);
+
     return card;
 }
 
