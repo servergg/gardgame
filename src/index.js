@@ -6,6 +6,10 @@ const {
 } = require("./constants.js");
 const { randomUniform } = require("./utils.js");
 
+function getRandom(list) {
+    return list[randomUniform(0, list.length)];
+}
+
 function generateRandomStats(rank, build) {
     let stats = {};
 
@@ -20,28 +24,12 @@ function generateRandomStats(rank, build) {
     return stats;
 }
 
-function generateRandomProfile() {
-    return PROFILES[randomUniform(0, PROFILES.length)];
-}
-
-function generateRandomElement() {
-    return ELEMENTS[randomUniform(0, ELEMENTS.length)];
-}
-
-function generateRandomBuild() {
-    return BUILDS[randomUniform(0, BUILDS.length)];
-}
-
-function generateRandomPreffix(element) {
-    return element.preffixes[randomUniform(0, element.preffixes.length)];
-}
-
 function generateCard(userid, rankIndex = 0) {
     const rank = RANKS[rankIndex];
-    const build = generateRandomBuild();
-    const element = generateRandomElement();
-    const preffix = generateRandomPreffix(element);
-    const profile = generateRandomProfile();
+    const build = getRandom(BUILDS);
+    const element = getRandom(ELEMENTS);
+    const preffix = getRandom(element.preffixes);
+    const profile = getRandom(PROFILES);
     const stats = generateRandomStats(rank, build);
 
     let card = {
