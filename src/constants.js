@@ -2,26 +2,18 @@ const RANK_ALGORITHM_LAMBDA = 3.6;
 
 const RANKS = [
     {
-        name: "D",
-        modifiers: {
-            primary: [5, 4],
-            secondary: [3, 2],
-            latter: [1, 0]
-        }
-    },
-    {
         name: "C",
         modifiers: {
-            primary: [6, 5],
-            secondary: [4, 3],
-            latter: [2, 1]
+            primary: [4, 3],
+            secondary: [3, 2],
+            latter: [2, 1, 0]
         }
     },
     {
         name: "B",
         modifiers: {
-            primary: [7, 6],
-            secondary: [5, 4],
+            primary: [6, 5],
+            secondary: [5, 4, 3],
             latter: [3, 2]
         }
     },
@@ -88,7 +80,7 @@ const ELEMENTS = [
             "Mystical",
             "Reflective",
             "Intuitive",
-            "Mindfull",
+            "Caring",
             "Harmonious",
             "Ethereal",
             "Sublime",
@@ -151,19 +143,9 @@ const BUILDS = [
 ];
 
 const PROFILES = [
-    "anainthesky",
-    "Bwana Plemos",
-    "gabrieleiro",
-    "Germano",
-    "Katsuo",
-    "Kriz",
-    "Lino",
-    "lucas",
-    "Nham",
-    "nobusada",
-    "Schweins",
-    "Trilles",
-    "𝖇𝖗𝖊𝖓𝖔",
+    183067684324376576,
+    450771395274866689,
+    237020475300118528,
 ];
 
 const TOKEN = process.env.TOKEN;
